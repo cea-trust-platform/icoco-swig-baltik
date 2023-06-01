@@ -10,7 +10,7 @@ By default, the application used is the balti TrioCFD (see project.cfg). Do not 
 
 ```bash
 # Clone the repo
-git clone git@github.com:eliesaikali/swig_baltik.git
+git clone git@github.com:cea-trust-platform/icoco-swig-baltik.git
 
 # Move to the cloned folder
 cd swig_baltik
