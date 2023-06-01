@@ -1,0 +1,21 @@
+# Baltik
+.check_sources.ok
+Makefile
+README.BALTIK
+build/
+configure
+local/
+SWIG_BALTIK_opt
+env_SWIG_BALTIK.sh
+full_env_SWIG_BALTIK.sh
+share/swig/install/
+
+# Eclipse
+.cproject
+.project
+.settings/
+
+#jupy + py
+.ipynb_checkpoints
+__pycache__
+
