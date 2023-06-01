@@ -18,6 +18,9 @@ cd swig_baltik
 # Initialize TRUST environment
 source [YOUR_PATH_TO_TRUST]/env_TRUST.sh
 
+# Do not forget to do the symbolic links of the desired baltik since it will be 
+# required as stated in the project.cg file. Here triocfd for example
+
 # Build the project
 baltik_build_configure -execute && make swig
 
