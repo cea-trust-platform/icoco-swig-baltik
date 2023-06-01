@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Add 'swig' as a target in the Makefile:
+# sed -i "s/^optim : /optim_old :/" Makefile
+sed -i "s/ctest_optim : optim/ctest_optim : optim_swig/" Makefile
+sed -i "s/check_optim : optim/check_optim : optim_swig/" Makefile
+TAB="$(printf '\t')"
+cat >> Makefile <<- EOF
+
+check_env :
+${TAB}@if [ "\${project_directory}" != "${PWD}" ]; then echo "SWIG_BALTIK env not sourced!!"; exit 1; fi
+
+swig : check_env optim module_optim
+${TAB}@echo "########################"
+${TAB}@echo "# SWIG generation      #"
+${TAB}@echo "########################"
+${TAB}@(cd ${PWD}/share/swig && ./install_and_test.sh)
+
+.PHONY : swig
+
+SHELL=/bin/bash # since we need to use the command source later
+
+# help optim         : Compiling in optimized mode (with module_opt + swig)
+optim_swig : check_sources
+${TAB}@echo "###########################"
+${TAB}@echo "# Compiling in optimized mode #"
+${TAB}@echo "###########################"
+${TAB}@env TRUST_ROOT_ORG=${TRUST_ROOT} ${TRUST_ROOT}/bin/baltik/share/baltik/bin/baltik_build optim
+${TAB}@echo "###########################"
+${TAB}@echo "# Compiling in optimized mode #"
+${TAB}@echo "###########################"
+${TAB}@env TRUST_ROOT_ORG=${TRUST_ROOT} ${TRUST_ROOT}/bin/baltik/share/baltik/bin/baltik_build module optim
+${TAB}@echo "########################"
+${TAB}@echo "# SWIG generation      #"
+${TAB}@echo "########################"
+${TAB}@source ${PWD}/env_for_python.sh && (cd ${PWD}/share/swig && ./install_and_test.sh)
+
+EOF
