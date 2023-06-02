@@ -4,7 +4,7 @@ This project defines an ICoCo SWIG wrapper that can be used for any BALTIK proje
 
 All you have to do is to clone this git repository and modify the **dependencies** in the project.cfg file so that you can add in it your desired project.
 
-By default, the application used is the balti TrioCFD (see project.cfg). Do not hesitate to modify this behavior and adapt it for your own BALTIK 🍻🍻🍻.
+By default, the application used is the baltik TrioCFD (see project.cfg). Do not hesitate to modify this behavior and adapt it for your own BALTIK 🍻🍻🍻.
 
 # How to start
 
