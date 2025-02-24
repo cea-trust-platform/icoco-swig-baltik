@@ -59,7 +59,12 @@ set_source_files_properties(swigbaltikicoco.i PROPERTIES CPLUSPLUS ON)
 set_source_files_properties(swigbaltikicoco.i PROPERTIES SWIG_FLAGS "-py3")
 
 swig_add_library(swigbaltikicoco LANGUAGE python SOURCES swigbaltikicoco.i)
-swig_link_libraries(swigbaltikicoco ${libdeps} ${libBaltik} ${libTrio} ${syslib} ${PYTHON_LIBRARIES} )
+
+if(APPLE)
+  swig_link_libraries(swigbaltikicoco ${libdeps} ${libBaltik} ${libTrio} ${syslib} ${PYTHON_LIBRARIES} )
+else()
+  swig_link_libraries(swigbaltikicoco ${libdeps} ${libBaltik} ${libTrio} ${syslib})
+endif()
 
 ##
 ## Tests
